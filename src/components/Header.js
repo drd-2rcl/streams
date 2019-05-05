@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import React from 'react'
 
+import GoogleAuth from '../GoogleAuth';
+
 const StyledHeader = styled.header`
 border-bottom: 2px solid #000;
 justify-content: space-around;
@@ -41,7 +43,7 @@ const Header = () => {
             <StyledLink to="/" >Streams</StyledLink>
           </StyledDiv>
           <StyledDiv>
-            <StyledLink to="/" >Login</StyledLink>
+            <GoogleAuth />
           </StyledDiv>
         </Row>
       </StyledHeader>
