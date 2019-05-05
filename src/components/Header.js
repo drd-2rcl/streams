@@ -1,20 +1,25 @@
-import React from 'react'
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import React from 'react'
 
 const StyledHeader = styled.header`
-width: 100%;
-height: 10vh;
-background: #000;
-display: flex;
+border-bottom: 2px solid #000;
 justify-content: space-around;
+text-decoration: none;
 align-items: center;
-font-size: 1rem;
+background: #fff;
 font-weight: bold;
-color: #fff;
+font-size: 1rem;
+display: flex;
+height: 50px;
 flex-grow: 1;
+color: #000;
+width: 100%;
 `
-
+const StyledLink = styled(Link)`
+text-decoration: none;
+color: #000;
+`
 const Row = styled.div`
 flex-direction: row;
 display: flex;
@@ -24,21 +29,19 @@ const StyledDiv = styled.div`
 margin: 5px;
 `;
 
-
 const Header = () => {
   return (
       <StyledHeader>
         <StyledDiv>
-          <Link to="/" >Streamer</Link>
+          <StyledLink to="/" >Streamer</StyledLink>
         </StyledDiv>
-        <StyledDiv>
-        </StyledDiv>
+        <StyledDiv />
         <Row>
           <StyledDiv>
-            <Link to="/" >Streamer</Link>
+            <StyledLink to="/" >Streams</StyledLink>
           </StyledDiv>
           <StyledDiv>
-            <Link to="/" >Streamer</Link>
+            <StyledLink to="/" >Login</StyledLink>
           </StyledDiv>
         </Row>
       </StyledHeader>
