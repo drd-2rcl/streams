@@ -41,7 +41,7 @@ const Header = () => {
 
         {/* <StyledDiv /> */}
         <StyledDiv>
-          <StyledLink to="/" >Streams</StyledLink>
+          <StyledLink to="/" >All Streams</StyledLink>
         </StyledDiv>
         
         <Row>
