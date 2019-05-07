@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { signIn, signOut } from './actions'
 
 import IconGoogle from './assets/google-brands.svg'
 import config from './env'
@@ -47,8 +49,13 @@ class GoogleAuth extends Component {
     });
   }
 
-  onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+  onAuthChange = (isSignedIn) => {
+    // this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+    if (isSignedIn) {
+      this.props.signIn();
+    } else {
+      this.props.signOut();
+    }
   }
 
   onSignInClick = () => {
@@ -86,4 +93,7 @@ class GoogleAuth extends Component {
   }
 }
 
-export default GoogleAuth;
+export default connect(
+  null, 
+  { signIn, signOut }
+)(GoogleAuth);
