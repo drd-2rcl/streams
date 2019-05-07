@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import IconGoogle from './assets/google-brands.svg'
-
 import config from './env'
 
 const { client_id } = config
@@ -52,11 +51,11 @@ class GoogleAuth extends Component {
     this.setState({ isSignedIn: this.auth.isSignedIn.get() })
   }
 
-  onSignIn = () => {
+  onSignInClick = () => {
     this.auth.signIn()
   }
 
-  onSignOut = () => {
+  onSignOutClick = () => {
     this.auth.signOut()
   }
 
@@ -65,14 +64,14 @@ class GoogleAuth extends Component {
       return <div>Loading ... </div>;
     } else if (this.state.isSignedIn) {
       return (
-        <GoogleButton onClick={this.onSignOut} >
+        <GoogleButton onClick={this.onSignOutClick} >
           <Image src={IconGoogle} alt="Google"/>
           Sign Out
         </GoogleButton>
       )
     } else {
       return (
-        <GoogleButton onClick={this.onSignIn} >
+        <GoogleButton onClick={this.onSignInClick} >
           <Image src={IconGoogle} alt="Google"/>
           Sign In with Google
         </GoogleButton>
