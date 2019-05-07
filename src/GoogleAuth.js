@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import IconGoogle from './assets/google-brands.svg'
+
 import config from './env'
 
 const { client_id } = config
 
 const GoogleButton = styled.button`
-  display: inline-block;
-  background: white;
-  color: #444;
-  width: 190px;
-  border-radius: 5px;
-  border: thin solid #888;
-  box-shadow: 1px 1px 1px grey;
-  white-space: nowrap;
+  background: red;
+  color: #fff;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 10px 15px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
   :hover {
     cursor: pointer;
+    opacity: 0.8;
   }
 `;
 
-const Icon = styled.label`
-  background: url('/client/src/assets/btn_google_light_normal_ios.svg') transparent 5px 50% no-repeat;
+const Image = styled.img`
   display: inline-block;
   vertical-align: middle;
-  width: auto;
-  height: auto;
-`
+  width: 25px;
+  height: 25px;
+  color: #fff;
+  padding-right: 7px;
+`;
 
 class GoogleAuth extends Component {
   state = { isSignedIn: null }
@@ -47,20 +52,28 @@ class GoogleAuth extends Component {
     this.setState({ isSignedIn: this.auth.isSignedIn.get() })
   }
 
+  onSignIn = () => {
+    this.auth.signIn()
+  }
+
+  onSignOut = () => {
+    this.auth.signOut()
+  }
+
   renderAuthButton() {
     if(this.state.isSignedIn === null) {
       return <div>Loading ... </div>;
     } else if (this.state.isSignedIn) {
       return (
-        <GoogleButton>
-          <Icon />
+        <GoogleButton onClick={this.onSignOut} >
+          <Image src={IconGoogle} alt="Google"/>
           Sign Out
         </GoogleButton>
       )
     } else {
       return (
-        <GoogleButton>
-          <Icon />
+        <GoogleButton onClick={this.onSignIn} >
+          <Image src={IconGoogle} alt="Google"/>
           Sign In with Google
         </GoogleButton>
       )
