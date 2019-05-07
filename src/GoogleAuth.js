@@ -34,8 +34,6 @@ const Image = styled.img`
 `;
 
 class GoogleAuth extends Component {
-  state = { isSignedIn: null }
-
   componentDidMount() {
     window.gapi.load('client:auth2', () => {
       window.gapi.client.init({
@@ -43,14 +41,14 @@ class GoogleAuth extends Component {
         scope: 'email'
       }).then(() => {
         this.auth = window.gapi.auth2.getAuthInstance();
-        this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+
+        this.onAuthChange(this.auth.isSignedIn.get());
         this.auth.isSignedIn.listen(this.onAuthChange)
       });
     });
   }
 
   onAuthChange = (isSignedIn) => {
-    // this.setState({ isSignedIn: this.auth.isSignedIn.get() })
     if (isSignedIn) {
       this.props.signIn();
     } else {
@@ -67,9 +65,9 @@ class GoogleAuth extends Component {
   }
 
   renderAuthButton() {
-    if(this.state.isSignedIn === null) {
+    if(this.props.isSignedIn === null) {
       return <div>Loading ... </div>;
-    } else if (this.state.isSignedIn) {
+    } else if (this.props.isSignedIn) {
       return (
         <GoogleButton onClick={this.onSignOutClick} >
           <Image src={IconGoogle} alt="Google"/>
@@ -93,7 +91,11 @@ class GoogleAuth extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return { isSignedIn: state.auth.isSignedIn };
+}
+
 export default connect(
-  null, 
+  mapStateToProps, 
   { signIn, signOut }
 )(GoogleAuth);
