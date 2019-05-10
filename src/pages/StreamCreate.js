@@ -28,8 +28,13 @@ const Form = styled.form`
 const Label = styled.label`
   color: #000;
   font-size: 1rem;
-  padding: 20px 0 10px 0;
   font-weight: bold;
+  /* padding: 20px 0 20px 0; */
+  /* margin-top: 10px; */
+`;
+
+const SytledDiv = styled.div`
+  margin-top: 5px;
 `;
 
 const Paragraph = styled.p`
@@ -53,18 +58,26 @@ const Button = styled.button`
 `;
 
 class StreamCreate extends Component {
-  renderInput({ input, label, meta }) {
+  renderError({ error, touched }) {
+    if (touched && error) {
+      return (
+        <div>
+          <Paragraph>{error}</Paragraph>
+        </div>
+      )
+    }
+  }
+
+  renderInput = ({ input, label, meta }) => {
     return (
       <div>
-        <div>
+        <SytledDiv>
           <Label>{label}</Label>
-        </div>
-        <div>
-          <Input { ...input } />
-        </div>
-        <div>
-          <Paragraph>{meta.error}</Paragraph>
-        </div> 
+        </SytledDiv>
+        <SytledDiv>
+          <Input { ...input } autoComplete="off" />
+        </SytledDiv>
+        <SytledDiv>{this.renderError(meta)}</SytledDiv>
       </div>
     )
   }
