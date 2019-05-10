@@ -34,28 +34,17 @@ margin: 5px;
 const Header = () => {
   return (
       <StyledHeader>
-        
         <StyledDiv>
           <StyledLink to="/" >Streamer</StyledLink>
         </StyledDiv>
-
-        {/* <StyledDiv /> */}
         <StyledDiv>
           <StyledLink to="/" >All Streams</StyledLink>
         </StyledDiv>
-        
         <Row>
-        
-          {/* <StyledDiv>
-            <StyledLink to="/" >Streams</StyledLink>
-          </StyledDiv> */}
-          
           <StyledDiv>
             <GoogleAuth />
           </StyledDiv>
-
         </Row>
-
       </StyledHeader>
   )
 }
