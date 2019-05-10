@@ -16,7 +16,7 @@ const Input = styled.input`
   border-radius: 4px;
   font-size: 1rem;
   padding: 0 20px;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
 `;
 
 const Form = styled.form`
@@ -28,8 +28,16 @@ const Form = styled.form`
 const Label = styled.label`
   color: #000;
   font-size: 1rem;
-  padding: 10px 0;
+  padding: 20px 0 10px 0;
   font-weight: bold;
+`;
+
+const Paragraph = styled.p`
+  color: #000;
+  font-size: 0.7rem;
+  padding: 0 0 10px 0;
+  font-weight: bold;
+  color: red;
 `;
 
 const Button = styled.button`
@@ -45,7 +53,7 @@ const Button = styled.button`
 `;
 
 class StreamCreate extends Component {
-  renderInput({ input, label }) {
+  renderInput({ input, label, meta }) {
     return (
       <div>
         <div>
@@ -54,6 +62,9 @@ class StreamCreate extends Component {
         <div>
           <Input { ...input } />
         </div>
+        <div>
+          <Paragraph>{meta.error}</Paragraph>
+        </div> 
       </div>
     )
   }
@@ -90,5 +101,6 @@ const validate = (formValues) => {
 }
 
 export default reduxForm({
-  form: 'streamCreate'
+  form: 'streamCreate',
+  validate
 })(StreamCreate);
