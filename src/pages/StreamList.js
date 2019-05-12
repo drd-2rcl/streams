@@ -2,6 +2,43 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchStreams } from '../actions/'
 // import streams from '../apis/streams';
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px;
+`;
+
+const Section = styled.section`
+  max-width: 700px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+`;
+
+const StyledDiv = styled.div`
+  width: 90%;
+`;
+
+
+const Article = styled.article`
+  background: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
+
+const Paragraph = styled.p`
+  font-size: 0.9rem;
+  color: #000;
+  margin-top: 5px;
+  line-height: 24px;
+`;
+
 
 class StreamList extends Component {
   componentDidMount() {
@@ -11,13 +48,15 @@ class StreamList extends Component {
   renderList() {
     return this.props.streams.map(stream => {
       return(
-        <div key={stream.id}>
-          <img alt=""/>
-          <div>
-          {stream.title}
-          <div>{stream.description}</div>
-          </div>
-        </div>
+        <Section key={stream.id}>
+          <Article>
+            <img alt=""/>
+            <div>
+              <strong>{stream.title}</strong>
+              <Paragraph>{stream.description}</Paragraph>
+            </div>
+          </Article>
+        </Section>
       )
     })
   }
@@ -25,10 +64,10 @@ class StreamList extends Component {
   render () {
     // console.log(this.props.streams)
     return (
-      <div>
+      <Container>
         <h2>Streams</h2>
-        <div>{this.renderList()}</div>
-      </div>
+        <StyledDiv>{this.renderList()}</StyledDiv>
+      </Container>
     )
   }
 } 
