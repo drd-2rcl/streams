@@ -11,7 +11,7 @@ class StreamEdit extends Component {
     if (!this.props.stream) {
       return <div>Loading...</div>
     }
-    
+
     return (
       <div>{this.props.stream.title}</div>
     )
@@ -25,4 +25,4 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
   mapStateToProps,
   { fetchStream }
-)(StreamEdit);
+)(StreamEdit); 
