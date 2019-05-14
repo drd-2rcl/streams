@@ -22,6 +22,8 @@ const Section = styled.section`
 
 const StyledDiv = styled.div`
   width: 90%;
+  display: ${props => props.display ? 'flex' : null };
+  justify-content: ${props => props.justifyContent ? 'flex-end' : null};
 `;
 
 
@@ -29,7 +31,7 @@ const Article = styled.article`
   background: #FFF;
   border: 1px solid #DDD;
   border-radius: 5px;
-  padding: 40px;
+  padding: 20px;
   margin-bottom: 20px;
 `;
 
@@ -47,6 +49,7 @@ const Button = styled.button`
   border-radius: 4px;
   font-size: 1rem;
   padding: 10px;
+  margin: 5px;
   font-weight: bold;
   border: 0;
   cursor: pointer;
@@ -61,10 +64,10 @@ class StreamList extends Component {
   renderAdmin(stream) {
     if (stream.userId === this.props.currentUserId) {
       return (
-        <div>
+        <StyledDiv display justifyContent >
           <Button>Edit</Button>
           <Button>Delete</Button>
-        </div>
+        </StyledDiv>
       ) 
     }
   }
