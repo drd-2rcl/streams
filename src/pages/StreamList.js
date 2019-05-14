@@ -43,7 +43,8 @@ const Paragraph = styled.p`
 `;
 
 const Button = styled.button`
-  background: #000;
+  /* background: #000; */
+  background: ${props => props.backgroundColor ? 'red' : '#000'};
   color: #fff;
   border: 1px solid #DDD;
   border-radius: 4px;
@@ -66,7 +67,7 @@ class StreamList extends Component {
       return (
         <StyledDiv display justifyContent >
           <Button>Edit</Button>
-          <Button>Delete</Button>
+          <Button backgroundColor >Delete</Button>
         </StyledDiv>
       ) 
     }
