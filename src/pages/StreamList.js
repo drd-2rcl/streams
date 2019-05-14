@@ -66,7 +66,9 @@ class StreamList extends Component {
     if (stream.userId === this.props.currentUserId) {
       return (
         <StyledDiv display justifyContent >
-          <Button>Edit</Button>
+          <Link to={`streams/edit/${stream.id}`} >
+            <Button>Edit</Button>
+          </Link>
           <Button backgroundColor >Delete</Button>
         </StyledDiv>
       ) 
@@ -82,8 +84,8 @@ class StreamList extends Component {
             <div>
               <strong>{stream.title}</strong>
               <Paragraph>{stream.description}</Paragraph>
-              {this.renderAdmin(stream)}
             </div>
+          {this.renderAdmin(stream)}
           </Article>
         </Section>
       )
