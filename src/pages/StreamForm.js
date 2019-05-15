@@ -29,8 +29,6 @@ const Label = styled.label`
   color: #000;
   font-size: 1rem;
   font-weight: bold;
-  /* padding: 20px 0 20px 0; */
-  /* margin-top: 10px; */
 `;
 
 const SytledDiv = styled.div`
