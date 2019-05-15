@@ -12,13 +12,6 @@ const Container = styled.div`
   color: #000;
 `
 
-const H3 = styled.h3`
-font-size: 1.3rem;
-font-weight: bold;
-color: #000;
-
-`;
-
 class StreamCreate extends Component {
   onSubmit = formValues => {
     this.props.createStream(formValues);
@@ -29,7 +22,7 @@ class StreamCreate extends Component {
     return (
       <div>
         <Container>
-          <H3>Create a Stream</H3>
+          <h2>Create a Stream</h2>
         </Container>
         <StreamForm onSubmit={this.onSubmit} />
       </div>
