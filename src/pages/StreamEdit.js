@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -33,7 +34,7 @@ class StreamEdit extends Component {
           <h2>Edit a Stream</h2>
         </Container>
         <StreamForm
-          initialValues={this.props.stream}
+          initialValues={_.pick(this.props.stream, 'title', 'description')}
           onSubmit={this.onSubmit} 
         />
       </div>
