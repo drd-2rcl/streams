@@ -69,7 +69,9 @@ class StreamList extends Component {
           <Link to={`streams/edit/${stream.id}`} >
             <Button>Edit</Button>
           </Link>
-          <Button backgroundColor >Delete</Button>
+          <Link to={`/streams/delete/${stream.id}`}>
+            <Button backgroundColor>Delete</Button>
+          </Link>
         </StyledDiv>
       ) 
     }
