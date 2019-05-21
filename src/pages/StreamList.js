@@ -84,7 +84,9 @@ class StreamList extends Component {
           <img alt=""/>
           <Article>
             <div>
-              <strong>{stream.title}</strong>
+              <Link to={`/streams/${stream.id}`}>
+                <strong>{stream.title}</strong>
+              </Link>
               <Paragraph>{stream.description}</Paragraph>
             </div>
           {this.renderAdmin(stream)}
