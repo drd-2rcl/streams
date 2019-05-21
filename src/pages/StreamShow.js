@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchStream } from '../actions';
+import flv from 'flv.js';
 
 class StreamShow extends Component {
   componentDidMount() {
@@ -16,6 +17,7 @@ class StreamShow extends Component {
 
     return (
       <div>
+        <video ref={this.videoRef} style={{ width: '100%' }} controls />
         <h1>{title}</h1>
         <h5>{description}</h5>
       </div>
